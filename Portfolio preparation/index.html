@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon image.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>My Portfolio</title>
+    <style>
+    /* Responsive styles */
+@media (max-width: 992px) {
+  .aside {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    width: 70%;
+    background: linear-gradient(#0de7fa,#079ba5,#1203fa);
+  }
+  .home .container{
+    padding-top: 140px;
+  }
+  .home .profession{
+    text-align: center;
+    margin-left: 100px;
+  }
+  .home h1{
+    margin-top: 20px;
+  }
+  .nav-toggler {
+    display: flex;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #0073b1;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    z-index: 1100;
+    cursor: pointer;
+  }
+
+  .show-aside {
+    display: block !important;
+  }
+
+  .logo img {
+    display: none;
+  }
+
+  .home-content,
+  .about-content,
+  .section-title h2,
+  .portfolio-heading h4,
+  .proj-item,
+  .contact-title h4,
+  .details {
+    margin-left: 0 !important;
+  }
+
+  .home .home-info,
+  .about-content,
+  .proj-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
+  .twobtn {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 15px;
+  }
+
+  .portfolio-heading h4 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .service .service-item {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .service .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin: 0 20px;
+  }
+
+  .mobile-profile-img {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .mobile-profile-img {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: 2px 2px 10px #ccc;
+  }
+
+  .aside .logo img {
+    display: none; /* Hide original sidebar image */
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .row-1,
+  .row-2 {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .one {
+    width: 100%;
+    height: auto;
+  }
+
+  .contact-info-item {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .twobtn {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .home .home-info,
+  .about-content {
+    text-align: center;
+    padding: 5px 20px;
+  }
+
+  .moreabt {
+    justify-content: center;
+  }
+
+  .about-content p {
+    padding: 0 10px;
+    font-size: 16px;
+  }
+
+  .logo img {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    width: auto;
+    text-align: center;
+  }
+
+  .home h1,
+  .section-title h2,
+  .portfolio-heading h4,
+  h1 {
+    font-size: 30px;
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .service .section-title h2 {
+    margin-left: 0;
+    text-align: center;
+  }
+
+  .twobtn {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .home .home-info,
+  .about-content {
+    text-align: center;
+    padding: 0 15px;
+  }
+
+  .about-content p,
+  .home .home-info p {
+    padding-left: 0;
+    font-size: 16px;
+  }
+
+  .moreabt {
+    justify-content: center;
+  }
+
+  .logo img {
+    display: none;
+  }
+}
+
+</style>
+
+</head>
+<body>
+
+    <div class="main-container">
+      <div class="nav-toggler" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+        <div class="aside padd-15">
+            <div class="logo">
+                <img src="myimg.jpg" alt="profile" class="mobile-progile-img" width="180px" height="170px">
+            </div>
+            <ul class="nav">
+                <li><a href="#1stnav" class="active"> Home</a></li>
+                <li><a href="#2ndnav" class="active">About</a></li>
+                <li><a href="#3rdnav" class="active">Services</a></li>
+                <li><a href="#4thnav" class="active">Projects</a></li>
+                <li><a href="#5thnav" class="active">Contact</a></li>
+            </ul>    
+        </div>
+        <!-- Home Section -->
+        <div class="main-content">
+            <section class="home" id="1stnav">
+                <h1>P<span>ortfolio</span></h1>
+                <div class="container">
+                    <div class="home-content">
+                        <div class="home-info padd-15">
+                            <h3 class="Hello"><span class="greetings">Hello Everyone!,</span> my name is  <span class="name">PARVATHY G</span></h3>
+                            <p class="profession">I'm a <span class="typing">Web Developer</span></p>
+                            <p id="bottom">I'm a Web Developer with hands-on experience through 2 to 3 internships in the domain of Web Development. I have built a strong foundation in Front-End Technologies.</p>
+                            <div class="moreabt">
+                            <a href="https://www.linkedin.com/in/parvathyg62"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://github.com/G-Parvathy20"><i class="fa-brands fa-github"></i></a>
+                            </div>
+                            <div class="twobtn">
+                                <a href="mailto:gparvathy45@gmail.com" class="btn hire-me">Hire Me</a>
+                                <a href="https://drive.google.com/file/d/1-ZDn4RVJH1UQQbC0KfPyrEiA2KxlAS0O/view?usp=sharing" class="btn hire-me">Download Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Section -->
+        <section class="about" id="2ndnav">
+            <div class="container">
+                <div class="row">
+                    <div class="section-title padd-15">
+                        <h2>About Me</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="about-content padd-15">
+                        <h2 style="font-size: 25px;">I'm Parvathy and <span style="color:#0073b1">Web Developer</span></h2>
+                        <p>I Passionate software developer with a solid foundation in Java, React, and Node.js, eager to contribute to real-world projects while continuously expanding knowledge in emerging technologies. Committed to delivering creative solutions through collaboration, adaptability, and innovative problem-solving within a forward-thinking team.</p>
+                        <div class="moreabt">
+                            <a href="https://www.linkedin.com/in/parvathyg62"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="https://github.com/G-Parvathy20"><i class="fa-brands fa-github"></i></a>
+                        </div>
+                        <div class="twobtn">
+                                <a href="#contact" class="btn hire-me">Hire Me</a>
+                                <a href="https://drive.google.com/file/d/1lgNHQouYbcx1GS2unC3Qgpx2cvNAahcK/view?usp=drive_link" class="btn hire-me">Download Resume</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Service Section -->
+         <section class="service" id="3rdnav">
+  <div class="container">
+    <div class="row">
+      <div class="section-title padd-15">
+        <h2>Services</h2>
+      </div>
+    </div>
+
+    <!-- ONE grid-container for all 6 services -->
+    <div class="grid-container">
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-solid fa-laptop-code"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">Web Development</h4>
+          <p style="font-size: 15px;">I build websites that work smoothly on phones, tablets & desktops.</p>
+        </div>
+      </div>
+
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-brands fa-figma"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">Web Design</h4>
+          <p style="font-size: 15px;">I create a clean and modern designs that look great on all screen sizes in figma.</p>
+        </div>
+      </div>
+
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-mobile-alt"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">Graphic Design</h4>
+          <p style="font-size: 15px;">I design eye-catching posters, flyers, and social media posts in creative.</p>
+        </div>
+      </div>
+
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-solid fa-palette"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">UI & UX Design</h4>
+          <p style="font-size: 15px;">I craft user-friendly layouts that ensure smooth and easy navigation.</p>
+        </div>
+      </div>
+
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-solid fa-pen-to-square"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">Content Writing</h4>
+          <p style="font-size: 15px;">I write clear and engaging content for websites, blogs, and social media.</p>
+        </div>
+      </div>
+
+      <div class="service-item padd-15">
+        <div class="service-item-inner">
+          <div class="icon"><i class="fa fa-solid fa-bullhorn"></i></div>
+          <h4 style="text-align: center; margin-bottom: 15px; font-size: 20px;">Media Handling</h4>
+          <p style="font-size: 15px;">I help grow your brand by managing and designing social media content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="portfolio" id="4thnav">
+  <div class="container">
+
+    <div class="row">
+      <div class="section-title padd-15">
+        <h1>Projects</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="portfolio-heading padd-15">
+        <h4>My Latest Projects :</h4>
+      </div>
+    </div>
+
+    <!-- Proj images -->
+     <div class="proj-item">
+      <div class="row-1">
+      <a href="https://g-parvathy20.github.io/myown2proj/animation%20try/anima.html"><img src="animation proj.png" alt="" class="one"></a>
+      <a href="https://g-parvathy20.github.io/myown3proj/symposium%20website%20creation/index.html"><img src="Symposium proj.png" alt="" class="one"></a>
+      <a href="https://icecream-website-black.vercel.app/"><img src="icecream website proj.png" alt="" class="one"></a>
+      </div>
+
+      <div class="row-2">
+      <a href="https://g-parvathy20.github.io/bhagavad_gita_API/"><img src="API proj.png" alt="" class="one"></a>
+      <a href="https://finiraaweb.onrender.com"><img src="Finira website.png" alt="" class="one"></a>
+      </div>
+
+     </div>
+  </div>
+</section>
+
+<section class="contact" id="5thnav">
+  <div class="container">
+    <div class="row">
+      <div class="section-title padd-15">
+        <h1>Contact Me</h1>
+      </div>
+    </div>
+    <div class="contact-title">
+      <h4>Have You Any Queries?</h4>
+      <h4>I'm At your Service</h4>
+
+    <div class="row details">
+      <div class="contact-info-item padd-15">
+        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+        <h4>Call Us On</h4>
+        <p><a href="tel:+919360602315">+91 9360602315</a></p>
+      </div>
+
+
+      <div class="contact-info-item padd-15">
+        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+        <h4>Email</h4>
+        <p><a href="mailto:gparvathy45@gmail.com">gparvathy45@gmail.com</a></p>
+      </div>
+
+
+      <div class="contact-info-item padd-15">
+        <div class="icon"><i class="fa-brands fa-linkedin"></i></div>
+        <h4>Message me</h4>
+        <p><a href="https://www.linkedin.com/in/parvathyg62">www.linkedin.com/in/parvathyg62</a></p>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</section>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
